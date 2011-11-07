@@ -13,10 +13,6 @@ node "node2.morisbak.net" inherits basenode {
     ensure => latest,
   }
   
-  file { '/tmp/poop': 
-    ensure => directory,
-  }
-
   group { 'deploy': ensure => present, gid => 1337 } 
   file { '/server':
     ensure => directory,
