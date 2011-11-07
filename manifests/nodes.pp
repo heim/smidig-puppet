@@ -12,6 +12,10 @@ node "node2.morisbak.net" inherits basenode {
   package { 'openjdk-7-jre': 
     ensure => latest,
   }
+  
+  file { '/tmp/poop': 
+    ensure => directory,
+  }
 
   group { 'deploy': ensure => present, gid => 1337 } 
   file { '/server':
