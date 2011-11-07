@@ -4,6 +4,11 @@ node basenode {
 
 node "node2.morisbak.net" inherits basenode {
   include postfix
+  
+  package { 'mailutils': 
+    ensure => latest,
+  }
+  
   package { 'openjdk-7-jre': 
     ensure => latest,
   }
@@ -34,4 +39,3 @@ node "node1.morisbak.net" inherits basenode {
   include nexus
   include mysql::server
 }
-
