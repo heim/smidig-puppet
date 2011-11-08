@@ -71,9 +71,7 @@ define install-jenkins-plugin($name, $version=0) {
       require  => File["${plugin_dir}"],
       path     => ["/usr/bin", "/usr/sbin",],
       user     => "jenkins",
-      unless   => "test -f ${plugin_dir}/${plugin}".
-      notify => Service["jenkins"];
+      unless   => "test -f ${plugin_dir}/${plugin}",
+      notify => Service["jenkins"],
   }
-  
-  
 }
