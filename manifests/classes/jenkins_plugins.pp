@@ -19,4 +19,6 @@ class jenkins::plugins {
       "chuck-norris-plugin" :
           name => "chucknorris";
   }
+  
+  
 }
