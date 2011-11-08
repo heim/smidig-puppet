@@ -1,4 +1,6 @@
 class jenkins::plugins {
+  
+  
   install-jenkins-plugin {
       "git-plugin" :
           name => "git";

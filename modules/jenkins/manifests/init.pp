@@ -53,7 +53,7 @@ define install-jenkins-plugin($name, $version=0) {
     file {
       "${plugin_dir}" :
         owner  => "jenkins",
-        ensure => directory;
+        ensure => directory,
     }
   }
 
@@ -72,6 +72,6 @@ define install-jenkins-plugin($name, $version=0) {
       path     => ["/usr/bin", "/usr/sbin",],
       user     => "jenkins",
       unless   => "test -f ${plugin_dir}/${plugin}",
-      notify => Service["jenkins"],
+      #notify => Service["jenkins"],
   }
 }
