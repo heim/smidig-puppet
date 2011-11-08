@@ -5,6 +5,7 @@ class ci inherits base {
   include jenkins::plugins
   include nexus
   include mysql::server
+  include mysql::user
   include users::admins
 }
 
