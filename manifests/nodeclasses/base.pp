@@ -1,6 +1,6 @@
 class base {
-  include users
-  
+  include users::admins
+    
   package { "git-core":
     ensure => latest,
   }
