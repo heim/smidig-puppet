@@ -8,6 +8,7 @@ node "node2.morisbak.net" inherits basenode {
 
 node "node3.morisbak.net" inherits basenode {
   include web
+  include db
 }
 
 node "node1.morisbak.net" inherits basenode {

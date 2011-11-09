@@ -27,5 +27,13 @@ class mysql::server {
       command => "mysqladmin -uroot password $mysql_password",
       require => Service["mysql"],
   }
+  
+  file { '/etc/mysql/my.cnf':
+     ensure => present,
+     mode   => 644,
+     owner  => 'root',
+     source => 'puppet:///modules/mysql/my.cnf',
+     notify => Service['mysql'], 
+   }
 
 }
