@@ -1,6 +1,7 @@
 class web inherits base {
   
   include users::deployer
+  include users::admins
   include postfix
   include mailutils
   include zip
