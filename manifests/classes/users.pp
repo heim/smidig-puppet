@@ -21,6 +21,27 @@ class users::admins inherits users {
     user => root,
     type => rsa,
   }
+
+}
+
+class users::deployer inherits users {
+  group { 'deploy': ensure => present, gid => 1337 } 
+  file { '/server':
+    ensure => directory,
+  }
+  user { 'bekkopen': 
+    ensure => present,
+    password => 'smidig2011',
+    uid => 1337,
+    gid => 1337,
+    shell   => "/bin/bash",
+    home    => "/server/bekkopen",
+    managehome => true,
+    require => File["/server"],
+  }
+}
+
+class users::deployer::admins inherits users::deployer {
   
   ssh_authorized_key { 'stein@mac-stimori.local2':
     ensure => present,
@@ -49,22 +70,5 @@ class users::admins inherits users {
   file { '/server/bekkopen/.ssh':
     ensure => directory,
     owner => bekkopen,
-  }
-}
-
-class users::deployer inherits users {
-  group { 'deploy': ensure => present, gid => 1337 } 
-  file { '/server':
-    ensure => directory,
-  }
-  user { 'bekkopen': 
-    ensure => present,
-    password => 'smidig2011',
-    uid => 1337,
-    gid => 1337,
-    shell   => "/bin/bash",
-    home    => "/server/bekkopen",
-    managehome => true,
-    require => File["/server"],
   }
 }
