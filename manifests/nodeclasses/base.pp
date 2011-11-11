@@ -1,6 +1,6 @@
 class base {
   include users::admins
-  include environment_variables  
+  include javahome  
   package { "git-core":
     ensure => latest,
   }
