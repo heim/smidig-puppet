@@ -33,7 +33,8 @@ class mysql::server {
      mode   => 644,
      owner  => 'root',
      source => 'puppet:///modules/mysql/my.cnf',
-     notify => Service['mysql'], 
+     notify => Service['mysql'],
+     require => Package['mysql-server'], 
    }
 
 }
