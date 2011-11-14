@@ -38,7 +38,6 @@ class nexus {
     require => File['/opt/nexus'],
   }
 
-
   package { 'openjdk-6-jre': 
     ensure => latest,
   }
