@@ -46,7 +46,7 @@ class jenkins {
       
       file { '/var/lib/jenkins/.ssh/id_rsa': 
         ensure => present,
-        mode => 644,
+        mode => 600,
         owner => "jenkins",
         source => "puppet:///modules/jenkins/jenkins_private_key",
       }
