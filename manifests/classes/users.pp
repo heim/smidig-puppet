@@ -39,6 +39,8 @@ class users::deployer inherits users {
     managehome => true,
     require => File["/server"],
   }
+  
+  
 }
 
 class users::deployer::admins inherits users::deployer {
@@ -65,6 +67,14 @@ class users::deployer::admins inherits users::deployer {
     user => bekkopen,
     type => rsa,
     require => File['/server/bekkopen/.ssh']
+  }
+  
+  ssh_authorized_key { 'jenkins@node1.morisbak.net': 
+    ensure => present,
+    key => "AAAAB3NzaC1yc2EAAAABIwAAAQEAtwwUodtSCKMCu7peFED+VRKPwB0VpRrReZA5KO4Pnap2a1k3nEyEomoe8QgVD1RPCHB1OCOrED1a+dNzvyOkIA6xE7IKlfefUE0M5gvFhHP7Ah6BFvWg2ZmePVgIj/BVtlvvzhdlg+SFPoZCu8cbRdpJlKkXoP7O9Z207Zg3AOQXGblGopSXdeXCBdANy6bA9N2qdjXJ6ep/6EGFW1otXIA7WwxLAkuL6Q/V88ywwuxAh54FQjikukfaoEwWdWH27clSj6dlkez3lzkkwCVcCJ8fXuociQUDMb3KPoaX6yrvh6rAixhUmTMzXpRinuxgyYZfQ8iUPmDGhnY+HPtusw==",
+    user => bekkopen,
+    type => rsa,
+    require => File['/server/bekkopen/.ssh'],
   }
   
   file { '/server/bekkopen/.ssh':
