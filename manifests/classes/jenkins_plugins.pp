@@ -1,4 +1,4 @@
-class jenkins::plugins extends jenkins {
+class jenkins::plugins inherits jenkins {
 
   
   install-jenkins-plugin {
