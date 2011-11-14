@@ -16,9 +16,8 @@ class mysql::server {
   service { 'mysql':
     enable => true,
     ensure => running, 
-    hasrestart => true,
     hasstatus => true,
-    require => Package['mysql-server'],
+    require => [Package['mysql-server'], File['/etc/mysql/my.cnf']],
   }
   
   exec { "set-mysql-password":
@@ -33,7 +32,6 @@ class mysql::server {
      mode   => 644,
      owner  => 'root',
      source => 'puppet:///modules/mysql/my.cnf',
-     notify => Service['mysql'],
      require => Package['mysql-server'], 
    }
 
