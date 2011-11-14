@@ -6,5 +6,11 @@ class mysql::user inherits mysql::server {
        
   }
   
+  exec { 'bekkopen_database':
+    unless => "/usr/bin/mysql -ubekkopen -phemmelig bekkopen",
+    command => "/usr/bin/mysql -ubekkopen -phemmelig -e \"CREATE database bekkopen;\"",
+    require => Exec['bekkopen_user'],
+  }
+  
 }
 
