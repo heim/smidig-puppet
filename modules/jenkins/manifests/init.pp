@@ -35,6 +35,34 @@ class jenkins {
        owner  => 'root',
        source => "puppet:///modules/jenkins/jenkins",
      }
+     
+     
+     file { '/var/lib/jenkins/.ssh': 
+        ensure => directory,
+        owner => jenkins,
+        require => Package['jenkins'],
+      }
+      
+      
+      file { '/var/lib/jenkins/.ssh/id_rsa': 
+        ensure => present,
+        mode => 644,
+        owner => "jenkins",
+        source => "puppet:///modules/jenkins/jenkins_private_key",
+      }
+      
+      file { '/var/lib/jenkins/.ssh/id_rsa.pub': 
+        ensure => present,
+        mode => 644,
+        owner => "jenkins",
+        source => "puppet:///modules/jenkins/jenkins_public_key",
+      }   
+      file { '/var/lib/jenkins/.ssh/config': 
+         ensure => present,
+         mode => 644,
+         owner => "jenkins",
+         source => "puppet:///modules/jenkins/ssh_config",
+      }
 
 }
 
