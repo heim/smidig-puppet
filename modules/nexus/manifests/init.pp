@@ -37,7 +37,7 @@ class nexus {
     target  => "/opt/nexus/bin/jsw/linux-x86-32/nexus",
     require => File['/opt/nexus'],
   }
-  package { 'openjdk-7-jre': 
+  package { 'openjdk-6-jre': 
     ensure => latest,
   }
 
