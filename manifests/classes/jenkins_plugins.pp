@@ -1,5 +1,5 @@
-class jenkins::plugins {
-  include jenkins
+class jenkins::plugins extends jenkins {
+
   
   install-jenkins-plugin {
       "git-plugin" :
